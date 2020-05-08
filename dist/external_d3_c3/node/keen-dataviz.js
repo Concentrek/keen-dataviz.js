@@ -954,7 +954,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = exportData;
 function generateCsvContent(data) {
-  var csvContent = 'data:text/csv;charset=utf-8,';
+  var csvContent = '';
 
   data.forEach(function (row, i) {
     row.forEach(function (cell, j) {
@@ -967,8 +967,7 @@ function generateCsvContent(data) {
       csvContent += '\n';
     }
   });
-
-  return csvContent;
+  return 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
 }
 
 function exportData(obj) {
@@ -992,6 +991,7 @@ function exportData(obj) {
 
   if (format === 'csv') {
     content = generateCsvContent(data);
+    console.log('content :>> ', content);
   }
 
   var htmlElement = document.createElement('a');
@@ -2800,7 +2800,7 @@ function valueAtDeepKey(obj, is, value) {
 /* 30 */
 /***/ (function(module) {
 
-module.exports = {"name":"keen-dataviz","description":"Data Visualization SDK for Keen IO","license":"MIT","version":"3.13.8","main":"dist/external_d3_c3/node/keen-dataviz.js","browser":"dist/external_d3_c3/keen-dataviz.js","style":"dist/keen-dataviz.css","scripts":{"start":"concurrently --kill-others \"NODE_ENV=development webpack-dev-server\" \"npm run postcss-watch\"","postcss-watch":"node_modules/postcss-cli/bin/postcss lib/style/keen-dataviz-c3.css -o test/demo/keen-dataviz.css --watch --config postcss.config.js","build":"NODE_ENV=production webpack -p && npm run build:css && NODE_ENV=production OPTIMIZE_MINIMIZE=1 webpack -p && npm run build:css && npm run build:css:min && npm run build:external_d3_c3 && npm run build:external_d3_c3:css && npm run build:external_d3_c3:css:min && npm run build:node","build:css":"node_modules/postcss-cli/bin/postcss lib/style/keen-dataviz-c3.css -o dist/keen-dataviz.css --config postcss.config.js","build:css:min":"OPTIMIZE_MINIMIZE=1 node_modules/postcss-cli/bin/postcss lib/style/keen-dataviz-c3.css -o dist/keen-dataviz.min.css --config postcss.config.js","build:external_d3_c3:css":"node_modules/postcss-cli/bin/postcss lib/style/keen-dataviz.css -o dist/external_d3_c3/keen-dataviz.css --config postcss.config.js","build:external_d3_c3:css:min":"OPTIMIZE_MINIMIZE=1 node_modules/postcss-cli/bin/postcss lib/style/keen-dataviz.css -o dist/external_d3_c3/keen-dataviz.min.css --config postcss.config.js","build:external_d3_c3":"NODE_ENV=production EXTERNAL_D3_C3=1 webpack -p && NODE_ENV=production EXTERNAL_D3_C3=1 OPTIMIZE_MINIMIZE=1 webpack -p","build:node":"TARGET=node NODE_ENV=production EXTERNAL_D3_C3=1 webpack -p","profile":"webpack --profile --json > stats.json","analyze":"webpack-bundle-analyzer stats.json /dist","version":"npm run build && git add .","postversion":"git push && git push --tags && npm publish","test":"NODE_ENV=test jest","test:watch":"NODE_ENV=test jest --watch"},"repository":{"type":"git","url":"https://github.com/keen/keen-dataviz.js.git"},"bugs":"https://github.com/keen/keen-dataviz.js/issues","author":"Keen.IO <team@keen.io> (https://keen.io/)","contributors":["Dustin Larimer <dustin@keen.io> (https://github.com/dustinlarimer)","Joanne Cheng <joanne@keen.io> (https://github.com/joannecheng)","Eric Anderson <eric@keen.io> (https://github.com/aroc)","Joe Wegner <joe@keen.io> (https://github.com/josephwegner)","Sara Falkoff <sara@keen.io (https://github.com/sfalkoff)","Adam Kasprowicz <adam.kasprowicz@keen.io> (https://github.com/adamkasprowicz)","Dariusz Łacheta <dariusz.lacheta@keen.io> (https://github.com/dariuszlacheta)"],"homepage":"https://keen.io","keywords":["d3","c3","Analytics","Stats","Statistics","Visualization","Visualizations","Data Visualization","Chart","Charts","Charting","Svg","Dataviz","Plots","Graphs","Funnels"],"dependencies":{"c3":"^0.7.2","d3":"^5.11.0","dom-to-image":"^2.6.0","file-saver":"^2.0.1","promise-polyfill":"^8.0.0","rangeable":"^0.1.6"},"devDependencies":{"autoprefixer":"^8.2.0","babel-loader":"^7.1.4","babel-plugin-transform-es2015-modules-commonjs":"^6.26.2","babel-plugin-transform-object-rest-spread":"^6.26.0","babel-preset-env":"^1.7.0","concurrently":"^3.5.1","cssnano":"^3.10.0","eslint":"^4.19.1","eslint-config-airbnb":"^16.1.0","eslint-loader":"^2.0.0","eslint-plugin-import":"^2.11.0","eslint-plugin-jsx-a11y":"^6.0.3","eslint-plugin-react":"^7.7.0","html-loader":"^0.5.5","html-webpack-plugin":"^3.2.0","jest":"^22.4.3","jest-environment-jsdom-c3":"^2.0.0","nock":"^9.2.6","postcss":"^6.0.21","postcss-cli":"^5.0.0","postcss-color-function":"^4.0.1","postcss-css-variables":"^0.8.1","postcss-cssnext":"^2.4.0","postcss-import":"^8.0.2","postcss-loader":"^2.1.3","precss":"^3.1.2","regenerator-runtime":"^0.11.1","replace-in-file":"^3.4.0","style-loader":"^0.20.3","webpack":"^4.29.0","webpack-bundle-analyzer":"^3.3.2","webpack-cli":"^3.2.1","webpack-dev-server":"^3.3.1","xhr-mock":"^2.3.2"}};
+module.exports = JSON.parse("{\"name\":\"keen-dataviz\",\"description\":\"Data Visualization SDK for Keen IO\",\"license\":\"MIT\",\"version\":\"3.13.8\",\"main\":\"dist/external_d3_c3/node/keen-dataviz.js\",\"browser\":\"dist/external_d3_c3/keen-dataviz.js\",\"style\":\"dist/keen-dataviz.css\",\"scripts\":{\"start\":\"concurrently --kill-others \\\"NODE_ENV=development webpack-dev-server\\\" \\\"npm run postcss-watch\\\"\",\"postcss-watch\":\"node_modules/postcss-cli/bin/postcss lib/style/keen-dataviz-c3.css -o test/demo/keen-dataviz.css --watch --config postcss.config.js\",\"build\":\"NODE_ENV=production webpack -p && npm run build:css && NODE_ENV=production OPTIMIZE_MINIMIZE=1 webpack -p && npm run build:css && npm run build:css:min && npm run build:external_d3_c3 && npm run build:external_d3_c3:css && npm run build:external_d3_c3:css:min && npm run build:node\",\"build:css\":\"node_modules/postcss-cli/bin/postcss lib/style/keen-dataviz-c3.css -o dist/keen-dataviz.css --config postcss.config.js\",\"build:css:min\":\"OPTIMIZE_MINIMIZE=1 node_modules/postcss-cli/bin/postcss lib/style/keen-dataviz-c3.css -o dist/keen-dataviz.min.css --config postcss.config.js\",\"build:external_d3_c3:css\":\"node_modules/postcss-cli/bin/postcss lib/style/keen-dataviz.css -o dist/external_d3_c3/keen-dataviz.css --config postcss.config.js\",\"build:external_d3_c3:css:min\":\"OPTIMIZE_MINIMIZE=1 node_modules/postcss-cli/bin/postcss lib/style/keen-dataviz.css -o dist/external_d3_c3/keen-dataviz.min.css --config postcss.config.js\",\"build:external_d3_c3\":\"NODE_ENV=production EXTERNAL_D3_C3=1 webpack -p && NODE_ENV=production EXTERNAL_D3_C3=1 OPTIMIZE_MINIMIZE=1 webpack -p\",\"build:node\":\"TARGET=node NODE_ENV=production EXTERNAL_D3_C3=1 webpack -p\",\"profile\":\"webpack --profile --json > stats.json\",\"analyze\":\"webpack-bundle-analyzer stats.json /dist\",\"version\":\"npm run build && git add .\",\"postversion\":\"git push && git push --tags && npm publish\",\"test\":\"NODE_ENV=test jest\",\"test:watch\":\"NODE_ENV=test jest --watch\"},\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/keen/keen-dataviz.js.git\"},\"bugs\":\"https://github.com/keen/keen-dataviz.js/issues\",\"author\":\"Keen.IO <team@keen.io> (https://keen.io/)\",\"contributors\":[\"Dustin Larimer <dustin@keen.io> (https://github.com/dustinlarimer)\",\"Joanne Cheng <joanne@keen.io> (https://github.com/joannecheng)\",\"Eric Anderson <eric@keen.io> (https://github.com/aroc)\",\"Joe Wegner <joe@keen.io> (https://github.com/josephwegner)\",\"Sara Falkoff <sara@keen.io (https://github.com/sfalkoff)\",\"Adam Kasprowicz <adam.kasprowicz@keen.io> (https://github.com/adamkasprowicz)\",\"Dariusz Łacheta <dariusz.lacheta@keen.io> (https://github.com/dariuszlacheta)\"],\"homepage\":\"https://keen.io\",\"keywords\":[\"d3\",\"c3\",\"Analytics\",\"Stats\",\"Statistics\",\"Visualization\",\"Visualizations\",\"Data Visualization\",\"Chart\",\"Charts\",\"Charting\",\"Svg\",\"Dataviz\",\"Plots\",\"Graphs\",\"Funnels\"],\"dependencies\":{\"c3\":\"^0.7.2\",\"d3\":\"^5.11.0\",\"dom-to-image\":\"^2.6.0\",\"file-saver\":\"^2.0.1\",\"promise-polyfill\":\"^8.0.0\",\"rangeable\":\"^0.1.6\"},\"devDependencies\":{\"autoprefixer\":\"^8.2.0\",\"babel-loader\":\"^7.1.4\",\"babel-plugin-transform-es2015-modules-commonjs\":\"^6.26.2\",\"babel-plugin-transform-object-rest-spread\":\"^6.26.0\",\"babel-preset-env\":\"^1.7.0\",\"concurrently\":\"^3.5.1\",\"cssnano\":\"^3.10.0\",\"eslint\":\"^4.19.1\",\"eslint-config-airbnb\":\"^16.1.0\",\"eslint-loader\":\"^2.0.0\",\"eslint-plugin-import\":\"^2.11.0\",\"eslint-plugin-jsx-a11y\":\"^6.0.3\",\"eslint-plugin-react\":\"^7.7.0\",\"html-loader\":\"^0.5.5\",\"html-webpack-plugin\":\"^3.2.0\",\"jest\":\"^22.4.3\",\"jest-environment-jsdom-c3\":\"^2.0.0\",\"nock\":\"^9.2.6\",\"postcss\":\"^6.0.21\",\"postcss-cli\":\"^5.0.0\",\"postcss-color-function\":\"^4.0.1\",\"postcss-css-variables\":\"^0.8.1\",\"postcss-cssnext\":\"^2.4.0\",\"postcss-import\":\"^8.0.2\",\"postcss-loader\":\"^2.1.3\",\"precss\":\"^3.1.2\",\"regenerator-runtime\":\"^0.11.1\",\"replace-in-file\":\"^3.4.0\",\"style-loader\":\"^0.20.3\",\"webpack\":\"^4.29.0\",\"webpack-bundle-analyzer\":\"^3.3.2\",\"webpack-cli\":\"^3.2.1\",\"webpack-dev-server\":\"^3.3.1\",\"xhr-mock\":\"^2.3.2\"}}");
 
 /***/ }),
 /* 31 */
@@ -7357,6 +7357,7 @@ exports.default = palette;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
 // CONCATENATED MODULE: ./node_modules/promise-polyfill/src/finally.js
@@ -7367,12 +7368,15 @@ function finallyConstructor(callback) {
   var constructor = this.constructor;
   return this.then(
     function(value) {
+      // @ts-ignore
       return constructor.resolve(callback()).then(function() {
         return value;
       });
     },
     function(reason) {
+      // @ts-ignore
       return constructor.resolve(callback()).then(function() {
+        // @ts-ignore
         return constructor.reject(reason);
       });
     }
@@ -7387,6 +7391,10 @@ function finallyConstructor(callback) {
 // Store setTimeout reference so promise-polyfill will be unaffected by
 // other code modifying setTimeout (like sinon.useFakeTimers())
 var setTimeoutFunc = setTimeout;
+
+function isArray(x) {
+  return Boolean(x && typeof x.length !== 'undefined');
+}
 
 function noop() {}
 
@@ -7545,8 +7553,10 @@ Promise.prototype['finally'] = src_finally;
 
 Promise.all = function(arr) {
   return new Promise(function(resolve, reject) {
-    if (!arr || typeof arr.length === 'undefined')
-      throw new TypeError('Promise.all accepts an array');
+    if (!isArray(arr)) {
+      return reject(new TypeError('Promise.all accepts an array'));
+    }
+
     var args = Array.prototype.slice.call(arr);
     if (args.length === 0) return resolve([]);
     var remaining = args.length;
@@ -7597,18 +7607,24 @@ Promise.reject = function(value) {
   });
 };
 
-Promise.race = function(values) {
+Promise.race = function(arr) {
   return new Promise(function(resolve, reject) {
-    for (var i = 0, len = values.length; i < len; i++) {
-      values[i].then(resolve, reject);
+    if (!isArray(arr)) {
+      return reject(new TypeError('Promise.race accepts an array'));
+    }
+
+    for (var i = 0, len = arr.length; i < len; i++) {
+      Promise.resolve(arr[i]).then(resolve, reject);
     }
   });
 };
 
 // Use polyfill for setImmediate for performance gains
 Promise._immediateFn =
+  // @ts-ignore
   (typeof setImmediate === 'function' &&
     function(fn) {
+      // @ts-ignore
       setImmediate(fn);
     }) ||
   function(fn) {
