@@ -33597,7 +33597,6 @@ function exportData(obj) {
 
   if (format === 'csv') {
     content = generateCsvContent(data);
-    console.log('content :>> ', content);
   }
 
   var htmlElement = document.createElement('a');
